@@ -289,6 +289,21 @@ footer a{color:var(--teal2);text-decoration:none}
   .spa-aed-corner{grid-template-columns:1fr}
   .spa-stat-item{padding:14px 20px}
 }
+/* novel spotlight */
+.spa-novel-sec{padding:56px 24px;background:#fff}
+.spa-novel-inner{max-width:1000px;margin:0 auto}
+.spa-novel-head{text-align:center;margin-bottom:32px}
+.spa-novel-badge{display:inline-block;background:linear-gradient(135deg,#E63946,#B82030);color:#fff;font-size:12px;font-weight:700;padding:6px 18px;border-radius:99px;margin-bottom:14px;letter-spacing:.04em}
+.spa-novel-head h2{font-size:clamp(20px,3vw,28px);font-weight:900;margin-bottom:8px}
+.spa-novel-head p{font-size:14px;color:var(--gray)}
+.spa-novel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:28px}
+.spa-novel-card{background:var(--gray-light);border-radius:20px;padding:22px 20px;border:1.5px solid var(--border);transition:all .2s;text-decoration:none;color:inherit;display:flex;flex-direction:column}
+.spa-novel-card:hover{transform:translateY(-4px);border-color:#E63946;box-shadow:0 10px 28px rgba(230,57,70,0.14)}
+.spa-novel-card .nc-tag{font-size:11px;font-weight:700;color:#fff;background:#E63946;padding:3px 10px;border-radius:99px;display:inline-block;width:fit-content;margin-bottom:10px}
+.spa-novel-card h3{font-size:15px;font-weight:900;line-height:1.5;margin-bottom:8px}
+.spa-novel-card p{font-size:12.5px;color:var(--gray);line-height:1.7;flex:1}
+.spa-novel-card .nc-link{font-size:12.5px;font-weight:700;color:var(--red);margin-top:12px}
+.spa-novel-cta{text-align:center}
 </style>
 
 <div class="spa-hero">
@@ -320,6 +335,7 @@ footer a{color:var(--teal2);text-decoration:none}
   <div class="spa-hero-btns">
     <button class="spa-btn-red" onclick="showPage('about')">💡 活動について</button>
     <button class="spa-btn-red" onclick="showPage('library')">📚 AEDライブラリーへ</button>
+    <button class="spa-btn-red" onclick="goNovels()">📖 AED小説を読む</button>
     <button class="spa-btn-outline" onclick="showPage('quiz')">🎯 クイズに挑戦</button>
   </div>
 </div>
@@ -330,6 +346,52 @@ footer a{color:var(--teal2);text-decoration:none}
   <div class="spa-stat-item"><span class="spa-stat-num">70万台+</span><span class="spa-stat-label">全国に設置済み</span></div>
   <div class="spa-stat-item"><span class="spa-stat-num">1人</span><span class="spa-stat-label">が広める、街が変わる</span></div>
 </div>
+
+<!-- ★ AED小説スポットライト（創作大賞2026） -->
+<section class="spa-novel-sec">
+  <div class="spa-novel-inner">
+    <div class="spa-novel-head">
+      <span class="spa-novel-badge">🏆 note創作大賞2026応募作</span>
+      <h2>物語で、AEDを感じる。</h2>
+      <p>SF、ミステリー、ラブコメ、青春――ジャンルを超えてAEDを描いた5つの創作大賞応募作を公開中。</p>
+    </div>
+    <div class="spa-novel-grid">
+      <a class="spa-novel-card" href="https://note.com/happy_ferret214/n/n98c0e5e5c1f7" target="_blank">
+        <span class="nc-tag">SF</span>
+        <h3>電流</h3>
+        <p>AEDに宿った意識「電次」に導かれ、過去の後悔と向き合いながら人を救い続ける男の物語。</p>
+        <span class="nc-link">noteで読む →</span>
+      </a>
+      <a class="spa-novel-card" href="https://note.com/happy_ferret214/n/n05fece7836a3" target="_blank">
+        <span class="nc-tag">ミステリー</span>
+        <h3>解析できません――心臓の言語――</h3>
+        <p>「解析できません」と繰り返す機械の裏にある、動物用AEDが存在しない現実と獣医師の秘密に迫る社会派ミステリー。</p>
+        <span class="nc-link">noteで読む →</span>
+      </a>
+      <a class="spa-novel-card" href="https://note.com/happy_ferret214/n/n79dc363e0f93" target="_blank">
+        <span class="nc-tag">近未来青春</span>
+        <h3>SKYDROP──空を、落とせ</h3>
+        <p>AEDドローンが命の優先順位を決める近未来、手動操縦の異端児パイロットが挑む熱血レース。</p>
+        <span class="nc-link">noteで読む →</span>
+      </a>
+      <a class="spa-novel-card" href="https://note.com/happy_ferret214/n/nfe4a149ed1dc" target="_blank">
+        <span class="nc-tag">ディストピアSF</span>
+        <h3>適切な死——AEDが消えた世界の記録——</h3>
+        <p>AEDが姿を消して百年後の世界。AI管理の外側で、人が人を救おうとする意志を取り戻す群像劇。</p>
+        <span class="nc-link">noteで読む →</span>
+      </a>
+      <a class="spa-novel-card" href="https://note.com/happy_ferret214/n/na02a67ff9a2a" target="_blank">
+        <span class="nc-tag">ラブコメ</span>
+        <h3>その箱、命が入ってます。</h3>
+        <p>誕生日にAEDを贈るという斜め上の選択をした男。だがその夜、路地裏で本当に人が倒れる――笑って泣ける物語。</p>
+        <span class="nc-link">noteで読む →</span>
+      </a>
+    </div>
+    <div class="spa-novel-cta">
+      <button class="spa-btn-red" onclick="goNovels()">📚 AEDライブラリーで小説をもっと読む</button>
+    </div>
+  </div>
+</section>
 
 </div>
 
@@ -701,6 +763,11 @@ function showPage(id){
   // quiz init
   if(id==='quiz'&&!document.getElementById('quiz-area').innerHTML){buildQuiz();}
 }
+function goNovels(){
+  showPage('library');
+  const el=document.querySelector(".lni[onclick*=\"lnav('novel'\"]");
+  if(el)lnav('novel',el);
+}
 function gs(id){
   // map old scroll calls to showPage
   const map={about:'about',coverage:'coverage',library:'library',quiz:'quiz',note:'note',contact:'contact'};
@@ -988,7 +1055,7 @@ const LSECLABS={info:'💡 AED基礎知識',map:'🗺️ 設置場所情報',new
 const LCATS=['info','map','news','essay','novel','comic','poem'];
 let lcur='all',lopens={};
 function lnav(c,el){lcur=c;document.querySelectorAll('.lni').forEach(n=>n.classList.remove('on'));el.classList.add('on');document.getElementById('ltitle').textContent=LTITLES[c]||'すべて';lrender();}
-function ltog(id){lopens[id]=!lopens[id];const bd=document.getElementById('lbd-'+id),ar=document.getElementById('lar-'+id),bt=document.getElementById('lbt-'+id);if(bd)bd.classList.toggle('op',!!lopens[id]);if(ar)ar.classList.toggle('op',!!lopens[id]);if(bt)bt.textContent=lopens[id]?'閉じる':'詳細を読む';}
+function ltog(id){lopens[id]=!lopens[id];const bd=document.getElementById('bd-'+id),ar=document.getElementById('ar-'+id),bt=document.getElementById('bt-'+id);if(bd)bd.classList.toggle('op',!!lopens[id]);if(ar)ar.classList.toggle('op',!!lopens[id]);if(bt)bt.textContent=lopens[id]?'閉じる':'詳細を読む';}
 function lallItems(){return LCATS.flatMap(c=>LDATA[c]||[]);}
 function lrender(){
   const q=(document.getElementById('lq').value||'').toLowerCase();
