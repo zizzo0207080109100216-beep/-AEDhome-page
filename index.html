@@ -3,151 +3,175 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>小野塚健一郎 | AEDひろめ隊 — 立川発・AED普及活動</title>
-<meta name="description" content="知っている人が、命を救う。立川市を拠点に個人でAED普及活動を続ける小野塚健一郎（AEDひろめ隊）の公式サイト。AEDマップ、ガイドブック、小説、クイズ、講演のご案内。">
+<title>AEDひろめ隊｜小野塚健一郎 公式サイト</title>
+<meta name="description" content="知っている人が、命を救う。立川市を拠点に個人でAED普及活動を続ける小野塚健一郎（AEDひろめ隊）の公式サイト。AEDマップ、ガイドブック、物語、クイズ、講演のご案内。">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Zen+Old+Mincho:wght@400;500;600;700&display=swap');
 :root{
-  --red:#C93A22; --red-dark:#A52A16; --red-bg:#FDF0EC;
-  --teal:#0F766E; --teal-dark:#0B5A54; --teal-bg:#E6F4F1;
-  --ink:#22221F; --body:#3F3F3A; --muted:#595952;
-  --line:#E3E0D8; --paper:#FAF9F6; --card:#FFFFFF;
+  --ink:#33393d; --muted:#687078; --line:#ddd8cf;
+  --paper:#fbfaf6; --accent:#a83a24; --accent-deep:#8c2f1d;
+  --serif:'Zen Old Mincho','Yu Mincho','Hiragino Mincho ProN',serif;
+  --sans:'Noto Sans JP','Hiragino Kaku Gothic ProN',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;color:var(--body);background:var(--paper);font-size:17px;line-height:1.85;-webkit-text-size-adjust:100%}
-a{color:var(--teal-dark)}
-img{max-width:100%}
-.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{color:var(--ink);background:var(--paper);font-family:var(--sans);font-size:16.5px;line-height:1.9;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath fill='%23708080' opacity='.05' filter='url(%23n)' d='M0 0h180v180H0z'/%3E%3C/svg%3E")}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600}
+.wrap{width:min(1080px,calc(100% - 48px));margin:0 auto}
+.eyebrow{font-size:11.5px;font-weight:500;letter-spacing:.19em;color:var(--accent);text-transform:uppercase}
+.small-note{font-size:13px;color:var(--muted)}
 
 /* ── Header ── */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
-.header-in{max-width:960px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:19px;font-weight:800;color:var(--ink);text-decoration:none;white-space:nowrap}
-.logo b{color:var(--red)}
-nav.main{display:flex;gap:20px}
-nav.main a{font-size:15px;font-weight:700;color:var(--body);text-decoration:none}
-nav.main a:hover{color:var(--red)}
-.header-cta{background:var(--red);color:#fff !important;padding:7px 16px;border-radius:99px}
-@media(max-width:760px){ nav.main a:not(.header-cta){display:none} }
+.header{min-height:100px;display:flex;align-items:center;gap:32px;padding:10px 4.5%;background:#fbfaf8;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.brand{text-decoration:none;line-height:1.25;flex-shrink:0}
+.brand strong{display:block;font-family:var(--serif);font-size:29px;font-weight:600;letter-spacing:.1em}
+.brand strong b{color:var(--accent);font-weight:600}
+.brand small{display:block;letter-spacing:.3em;font-size:9.5px;margin-top:7px;text-align:center;color:var(--muted)}
+.header nav{display:flex;gap:24px;margin-left:auto}
+.header nav a{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:13px;text-decoration:none;white-space:nowrap}
+.header nav a span{font-family:var(--serif);font-size:13.5px;color:#8a7f72}
+.header nav a:hover{color:var(--accent)}
+.header-note{font-family:var(--serif);font-size:13px;writing-mode:vertical-rl;letter-spacing:.14em;height:78px;color:var(--muted)}
+@media(max-width:820px){.header nav{display:none}.header-note{display:none}}
 
 /* ── Hero ── */
-.hero{background:linear-gradient(165deg,#FFF7F3 0%,#FDECE6 100%);padding:56px 0 48px;text-align:center;border-bottom:1px solid var(--line)}
-.badge{display:inline-block;background:#fff;border:1.5px solid var(--red);color:var(--red-dark);font-size:14px;font-weight:700;padding:4px 16px;border-radius:99px;margin-bottom:20px}
-.hero h1{font-size:clamp(32px,6vw,52px);line-height:1.35;color:var(--ink);font-weight:900;margin-bottom:16px}
-.hero h1 em{font-style:normal;color:var(--red)}
-.hero .lead{font-size:18px;max-width:620px;margin:0 auto 30px}
-.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;text-decoration:none;font-weight:800;font-size:17px;padding:14px 26px;border-radius:99px;line-height:1.4}
-.btn-red{background:var(--red);color:#fff;box-shadow:0 4px 16px rgba(201,58,34,.3)}
-.btn-red:hover{background:var(--red-dark)}
-.btn-white{background:#fff;color:var(--red-dark);border:2px solid var(--red)}
-.btn-teal{background:#fff;color:var(--teal-dark);border:2px solid var(--teal)}
+.hero{position:relative;padding:104px 0 96px;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .eyebrow{margin-bottom:22px}
+.hero h1{font-size:clamp(34px,5.2vw,56px);font-weight:500;line-height:1.65;letter-spacing:.09em}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{margin-top:26px;font-size:16px;line-height:2.15;letter-spacing:.05em;color:#4c5157;max-width:600px}
+.button{display:inline-flex;align-items:center;gap:44px;background:var(--accent);color:#fff;border:1px solid #ffffff7a;padding:12px 22px;border-radius:3px;font-size:14.5px;letter-spacing:.08em;text-decoration:none;box-shadow:0 4px 15px rgba(90,30,15,.18);transition:background .2s}
+.button:hover{background:var(--accent-deep)}
+.button.ghost{background:transparent;color:var(--accent);border:1px solid var(--accent);box-shadow:none}
+.button.ghost:hover{background:#f6e9e4}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.paper-note{position:absolute;right:4.5%;top:64px;width:176px;padding:34px 16px 24px;background:#fffefa;transform:rotate(5deg);text-align:center;box-shadow:0 4px 16px rgba(40,25,15,.14);font-family:var(--serif)}
+.paper-note .tape{position:absolute;width:66px;height:24px;top:-11px;left:52px;background:rgba(215,205,180,.65);transform:rotate(-11deg)}
+.paper-note p{line-height:2.1;letter-spacing:.14em;font-size:17px}
+.paper-note small{font-family:var(--sans);font-size:8.5px;letter-spacing:.14em;display:block;margin-top:24px;color:var(--muted)}
+@media(max-width:900px){.paper-note{display:none}}
 
-/* ── Stats ── */
-.stats{background:var(--red);color:#fff}
-.stats-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:20px 10px;text-align:center;border-right:1px solid rgba(255,255,255,.25)}
+/* ── Quick nav ── */
+.quick-nav{display:flex;gap:0;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.quick-nav a{flex:1 1 150px;text-align:center;padding:16px 8px;font-family:var(--serif);font-size:15px;letter-spacing:.08em;text-decoration:none;border-right:1px solid var(--line)}
+.quick-nav a:last-child{border-right:none}
+.quick-nav a:hover{background:#fff;color:var(--accent)}
+
+/* ── Stats strip ── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}
+.stat{padding:28px 14px;text-align:center;border-right:1px solid var(--line)}
 .stat:last-child{border-right:none}
-.stat b{display:block;font-size:30px;line-height:1.2}
-.stat span{font-size:14px;opacity:.95}
-@media(max-width:640px){.stats-in{grid-template-columns:1fr 1fr}.stat{border-bottom:1px solid rgba(255,255,255,.25)}}
+.stat b{display:block;font-family:var(--serif);font-size:31px;font-weight:600;color:var(--accent);line-height:1.3}
+.stat span{font-size:13px;color:var(--muted);letter-spacing:.05em}
+@media(max-width:640px){.stats{grid-template-columns:1fr 1fr}.stat{border-bottom:1px solid var(--line)}}
 
 /* ── Sections ── */
-section{padding:56px 0}
-section.alt{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.kicker{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--red);margin-bottom:6px}
-h2{font-size:clamp(24px,4vw,32px);color:var(--ink);line-height:1.4;margin-bottom:12px}
-.sec-lead{max-width:680px;margin-bottom:28px}
-.grid{display:grid;gap:16px}
-.grid-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.grid-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
-.card h3{font-size:19px;color:var(--ink);line-height:1.5;margin-bottom:8px}
-.card p{font-size:16px}
-.card .icon{font-size:30px;margin-bottom:10px}
-.card a.more{display:inline-block;margin-top:10px;font-weight:700;text-decoration:none}
-.card a.more:hover{text-decoration:underline}
-.tag{display:inline-block;font-size:13px;font-weight:800;padding:2px 10px;border-radius:99px;background:var(--red-bg);color:var(--red-dark);margin-bottom:8px}
-.tag.teal{background:var(--teal-bg);color:var(--teal-dark)}
+section{padding:84px 0;border-bottom:1px solid var(--line)}
+.section-heading{margin-bottom:38px}
+.section-heading h2{font-size:27px;letter-spacing:.08em;margin-top:8px}
+.section-heading .small-note{margin-top:8px}
+.grid{display:grid;gap:18px}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
+.grid-3{grid-template-columns:repeat(auto-fit,minmax(235px,1fr))}
+.card{background:#fffefa;border:1px solid var(--line);border-radius:3px;padding:26px 24px}
+.card h3{font-size:20px;letter-spacing:.05em;margin-bottom:9px;line-height:1.55}
+.card p{font-size:15.5px;color:#4c5157}
+a.card{text-decoration:none;display:block;transition:box-shadow .2s,transform .2s}
+a.card:hover{box-shadow:0 8px 24px rgba(40,25,15,.10);transform:translateY(-2px)}
+.more{display:inline-block;margin-top:12px;font-size:14px;letter-spacing:.06em;color:var(--accent);font-weight:600;text-decoration:none}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.12em;padding:2px 10px;border:1px solid var(--accent);color:var(--accent);border-radius:99px;margin-bottom:12px}
 
-/* ── Profile ── */
-.profile{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
-@media(max-width:700px){.profile{grid-template-columns:1fr}}
-.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
-.numbers .card{text-align:center;padding:16px 8px}
-.numbers b{display:block;font-size:30px;color:var(--red);line-height:1.2}
-.numbers span{font-size:14px;color:var(--muted)}
+/* profile */
+.profile-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start}
+@media(max-width:760px){.profile-grid{grid-template-columns:1fr}}
+.profile-grid p{margin-bottom:16px;color:#4c5157}
+.profile-name{font-family:var(--serif);font-size:24px;letter-spacing:.1em;margin-bottom:18px}
+.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.numbers .card{text-align:center;padding:18px 6px}
+.numbers b{display:block;font-family:var(--serif);font-size:29px;color:var(--accent);line-height:1.3}
+.numbers span{font-size:12.5px;color:var(--muted)}
 
-/* ── Quiz ── */
-.quiz-card{background:#fff;border:2px solid var(--teal);border-radius:16px;padding:24px;margin-bottom:16px}
-.quiz-card h3{font-size:18px;color:var(--ink);margin-bottom:14px;line-height:1.6}
-.opt{display:block;width:100%;text-align:left;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-size:16px;font-family:inherit;color:var(--ink);cursor:pointer;margin-bottom:10px;line-height:1.6}
-.opt:hover{border-color:var(--teal)}
-.opt.correct{background:var(--teal-bg);border-color:var(--teal);font-weight:700}
-.opt.wrong{background:var(--red-bg);border-color:var(--red)}
-.expl{display:none;background:#F4F7F6;border-left:4px solid var(--teal);border-radius:8px;padding:14px 16px;font-size:16px;margin-top:6px}
+/* timeline */
+.timeline{list-style:none}
+.timeline li{display:grid;grid-template-columns:56px 130px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.timeline li:last-child{border-bottom:none}
+.t-num{font-family:var(--serif);font-size:21px;color:#b9ac9c}
+.t-date{font-size:13.5px;letter-spacing:.1em;color:var(--muted);white-space:nowrap}
+.timeline h3{font-size:19px;margin-bottom:5px}
+.timeline p{font-size:15px;color:#4c5157}
+@media(max-width:640px){.timeline li{grid-template-columns:36px 1fr}.t-date{grid-column:2}.timeline .t-body{grid-column:2}}
+
+/* quiz */
+.quiz-card{background:#fffefa;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:3px;padding:24px;margin-bottom:16px}
+.quiz-card h3{font-size:18px;margin-bottom:14px;line-height:1.65}
+.opt{display:block;width:100%;text-align:left;background:var(--paper);border:1px solid var(--line);border-radius:3px;padding:12px 16px;font-size:15.5px;font-family:inherit;color:var(--ink);cursor:pointer;margin-bottom:9px;line-height:1.65}
+.opt:hover{border-color:var(--accent)}
+.opt.correct{background:#f6e9e4;border-color:var(--accent);font-weight:700}
+.opt.wrong{background:#eee9e2;border-color:#a39a8b}
+.expl{display:none;background:#f7f3ec;border-left:3px solid #b9ac9c;padding:14px 16px;font-size:15px;margin-top:6px}
 .expl.show{display:block}
 
-/* ── Contact / Footer ── */
-.contact{background:var(--red);border-radius:20px;padding:36px 28px;text-align:center;color:#fff}
-.contact h2{color:#fff}
-.contact p{max-width:560px;margin:0 auto 22px}
-.contact .btn{background:#fff;color:var(--red-dark);box-shadow:none;word-break:break-all}
-footer{padding:32px 0 40px;text-align:center;font-size:14px;color:var(--muted)}
-footer a{margin:0 8px}
-.toc{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:18px 0 0}
-.toc a{background:#fff;border:1px solid var(--line);border-radius:99px;padding:6px 16px;font-size:15px;font-weight:700;color:var(--body);text-decoration:none}
-.toc a:hover{border-color:var(--red);color:var(--red-dark)}
+/* about / contact */
+.about-place{max-width:680px}
+.about-place p{margin-bottom:14px;color:#4c5157}
+.contact-box{text-align:center;padding:20px 0 4px}
+.contact-box .mail{font-family:var(--serif);font-size:clamp(17px,3vw,23px);letter-spacing:.05em;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);word-break:break-all}
+footer{padding:44px 0 52px;text-align:center}
+footer .fbrand{font-family:var(--serif);font-size:19px;letter-spacing:.12em;margin-bottom:10px}
+footer p{font-size:13px;color:var(--muted)}
+footer a{margin:0 9px}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="header-in">
-    <a class="logo" href="#top">💗 AED<b>ひろめ隊</b></a>
-    <nav class="main">
-      <a href="#about">活動について</a>
-      <a href="#novels">小説</a>
-      <a href="#works">マップ・制作物</a>
-      <a href="#quiz">クイズ</a>
-      <a class="header-cta" href="#contact">お問い合わせ</a>
-    </nav>
-  </div>
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <a class="brand" href="#top"><strong>AED<b>ひろめ隊</b></strong><small>AED HIROME-TAI ・ TACHIKAWA</small></a>
+  <nav>
+    <a href="#profile"><span>Profile</span>知る</a>
+    <a href="#reading"><span>Reading</span>物語</a>
+    <a href="#map"><span>Map &amp; Guide</span>地図と本</a>
+    <a href="#quiz"><span>Quiz</span>クイズ</a>
+    <a href="#coverage"><span>Coverage</span>掲載実績</a>
+    <a href="#contact"><span>Contact</span>お問い合わせ</a>
+  </nav>
+  <div class="header-note">知っている人が、命を救う。</div>
 </header>
 
-<!-- ═══ HERO：最初の画面で「何のサイトか」「次に何をすればいいか」を言い切る ═══ -->
+<!-- ═══ HERO ═══ -->
 <div class="hero" id="top">
   <div class="wrap">
-    <span class="badge">🏙️ 立川市発 ・ 個人のAED普及活動</span>
+    <p class="eyebrow">Tachikawa ・ AED Awareness</p>
     <h1>知っている人が、<br><em>命を救う。</em></h1>
-    <p class="lead">AEDは、電源を入れれば音声ガイドが教えてくれる、誰でも使える機械です。<br>ゲームで学んで、物語で感じて、街に広げよう。</p>
-    <div class="cta-row">
-      <a class="btn btn-red" href="https://www.google.com/maps/d/u/0/viewer?hl=ja&amp;mid=1azti_3lIAn9OZA0vOhLM8OoNybZLHuI&amp;ll=35.57682187629004%2C139.4189246&amp;z=11" target="_blank" rel="noopener">🗺️ 近くのAEDマップを見る</a>
-      <a class="btn btn-teal" href="#quiz">🎯 クイズで学ぶ</a>
-      <a class="btn btn-white" href="#contact">✉️ 講演・相談をする</a>
-    </div>
-    <div class="toc">
-      <a href="#about">活動について</a><a href="#can">できること</a><a href="#novels">小説5作品</a><a href="#works">ガイドブック・マップ</a><a href="#media">掲載実績</a><a href="#note">最近のnote</a>
+    <p class="lead">AEDは、電源を入れれば音声ガイドが教えてくれる、誰でも使える機械です。<br>ゲームで学んで、物語で感じて、街に広げよう。<br>立川市を拠点に、個人で続けるAED普及活動の記録。</p>
+    <div class="hero-btns">
+      <a class="button" href="https://www.google.com/maps/d/u/0/viewer?hl=ja&amp;mid=1azti_3lIAn9OZA0vOhLM8OoNybZLHuI&amp;ll=35.57682187629004%2C139.4189246&amp;z=11" target="_blank" rel="noopener">近くのAEDマップを見る <span>↗</span></a>
+      <a class="button ghost" href="#quiz">クイズで学ぶ</a>
     </div>
   </div>
+  <div class="paper-note"><span class="tape"></span><p>怖くない。<br>知っていれば、<br>動ける。</p><small>AED HIROME-TAI</small></div>
 </div>
 
-<div class="stats">
-  <div class="stats-in">
-    <div class="stat"><b>72%</b><span>のAEDが使われずに終わる</span></div>
-    <div class="stat"><b>3分</b><span>以内の除細動が鍵</span></div>
-    <div class="stat"><b>70万台+</b><span>全国に設置済み</span></div>
-    <div class="stat"><b>1人</b><span>が広める、街が変わる</span></div>
-  </div>
+<nav class="quick-nav wrap" style="width:100%">
+  <a href="#profile">小野塚健一郎</a><a href="#can">できること</a><a href="#reading">小説 5作品</a><a href="#map">マップ・本</a><a href="#timeline">あゆみ</a><a href="#note">最近のnote</a>
+</nav>
+
+<div class="stats wrap" style="width:100%">
+  <div class="stat"><b>72%</b><span>のAEDが使われずに終わる</span></div>
+  <div class="stat"><b>3分</b><span>以内の除細動が鍵</span></div>
+  <div class="stat"><b>70万台+</b><span>全国に設置済み</span></div>
+  <div class="stat"><b>1人</b><span>が広める、街が変わる</span></div>
 </div>
 
-<!-- ═══ PROFILE / ABOUT ═══ -->
-<section id="about">
+<!-- ═══ PROFILE ═══ -->
+<section id="profile">
   <div class="wrap">
-    <div class="profile">
+    <div class="section-heading"><p class="eyebrow">Profile</p><h2>小野塚健一郎を知る</h2></div>
+    <div class="profile-grid">
       <div>
-        <p class="kicker">PROFILE</p>
-        <h2>小野塚 健一郎</h2>
+        <p class="profile-name">小野塚 健一郎</p>
         <p>2004年、プールの監視員として初めて心停止に遭遇。AEDを使えなかったが、その場にいた人たちの必死の行動で、結果として助けることができました。</p>
         <p>この経験から、救命の現場はAEDという機械がすべてではなく、「居合わせた人がどう動くか」という心のハードルにあると痛感しました。</p>
         <p>「知っている人が動ける」社会を目指し、小冊子・ゲーム・漫才・マップなど、あらゆる手段でAEDと救命のハードルを下げ続けています。立川を中心に、杉並区など都内各地を拠点として活動中。</p>
@@ -158,125 +182,135 @@ footer a{margin:0 8px}
         </div>
       </div>
       <div class="card">
-        <p class="kicker">ABOUT</p>
-        <h3 style="font-size:21px">AEDひろめ隊の活動</h3>
+        <p class="eyebrow" style="margin-bottom:10px">About</p>
+        <h3>AEDひろめ隊の活動</h3>
         <p>小野塚健一郎が個人で続けるAED普及活動。知識を広め、使える人を増やすために。</p>
         <p>職場の安全衛生管理を担いながら、個人でAED普及啓発活動を続けています。専門家の講習とは少し視点を変え、<strong>「いざという時の心のブレーキをどう外すか」「日常の中でどうAEDを見つけるか」</strong>を、小冊子・ゲーム・小説・エッセイで楽しく届けます。</p>
         <p>「難しい、怖い」というイメージを、<strong>「これなら自分にもできるかも」</strong>という自信に変えるお手伝いをしています。</p>
-        <p style="margin-top:14px"><a class="more" href="https://note.com/happy_ferret214" target="_blank" rel="noopener">✍️ noteで活動記録を読む →</a></p>
+        <a class="more" href="https://note.com/happy_ferret214" target="_blank" rel="noopener">noteで活動記録を読む ↗</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══ できること ═══ -->
-<section class="alt" id="can">
+<section id="can">
   <div class="wrap">
-    <p class="kicker">FOR YOU</p>
-    <h2>こんなことができます</h2>
-    <p class="sec-lead">学校・企業・地域団体・施設の方へ。まずは<a href="#contact">お問い合わせ</a>からどうぞ。</p>
+    <div class="section-heading"><p class="eyebrow">With AED Hirome-tai</p><h2>日々にも、AEDを。</h2><p class="small-note">学校・企業・地域団体・施設の方へ。まずはお問い合わせからどうぞ。</p></div>
     <div class="grid grid-3">
-      <div class="card"><div class="icon">🎤</div><h3>講演会</h3><p>学校・企業・地域団体むけにAED普及講座を実施。高校生約300名への講演実績あり。</p></div>
-      <div class="card"><div class="icon">🗺️</div><h3>AEDマップ作製ワークショップ</h3><p>自分たちの地域のAEDを歩いて探し、マップに落とし込む体験型ワークショップ。</p><a class="more" href="https://www.google.com/maps/d/u/0/viewer?hl=ja&amp;mid=1azti_3lIAn9OZA0vOhLM8OoNybZLHuI&amp;ll=35.57682187629004%2C139.4189246&amp;z=11" target="_blank" rel="noopener">立川市AEDマップを見る →</a></div>
-      <div class="card"><div class="icon">📖</div><h3>小冊子作製・提供</h3><p>AED啓発のための自作小冊子。下記2種を無料公開中。</p><a class="more" href="https://zizzo0207080109100216-beep.github.io/sanpo5/" target="_blank" rel="noopener">いのちを守る立川さんぽ →</a><br><a class="more" href="https://zizzo0207080109100216-beep.github.io/suspense3/" target="_blank" rel="noopener">AEDサスペンス小冊子 →</a></div>
-      <div class="card"><div class="icon">🚶</div><h3>出前講座</h3><p>学校（市民科など）や自治会での、街歩きを交えたAED体験学習。</p></div>
-      <div class="card"><div class="icon">💬</div><h3>アドバイス・相談</h3><p>施設・店舗でのAED設置・周知に関する市民目線のご相談。</p></div>
-      <div class="card"><div class="icon">🎮</div><h3>ゲーム・クイズで学ぶ</h3><p>楽しみながら知識を確認。ゲーム感覚でAEDの正しい使い方を学べます。</p><a class="more" href="#quiz">下のクイズに挑戦 →</a></div>
+      <div class="card"><h3>講演会</h3><p>学校・企業・地域団体むけにAED普及講座を実施。高校生約300名への講演実績あり。</p></div>
+      <div class="card"><h3>AEDマップ作製ワークショップ</h3><p>自分たちの地域のAEDを歩いて探し、マップに落とし込む体験型ワークショップ。</p><a class="more" href="https://www.google.com/maps/d/u/0/viewer?hl=ja&amp;mid=1azti_3lIAn9OZA0vOhLM8OoNybZLHuI&amp;ll=35.57682187629004%2C139.4189246&amp;z=11" target="_blank" rel="noopener">立川市AEDマップを見る ↗</a></div>
+      <div class="card"><h3>小冊子作製・提供</h3><p>AED啓発のための自作小冊子。2種を無料公開中。</p><a class="more" href="https://zizzo0207080109100216-beep.github.io/sanpo5/" target="_blank" rel="noopener">いのちを守る立川さんぽ ↗</a><br><a class="more" href="https://zizzo0207080109100216-beep.github.io/suspense3/" target="_blank" rel="noopener">AEDサスペンス小冊子 ↗</a></div>
+      <div class="card"><h3>出前講座</h3><p>学校（市民科など）や自治会での、街歩きを交えたAED体験学習。</p></div>
+      <div class="card"><h3>アドバイス・相談</h3><p>施設・店舗でのAED設置・周知に関する市民目線のご相談。</p></div>
+      <div class="card"><h3>ゲーム・クイズで学ぶ</h3><p>楽しみながら知識を確認。ゲーム感覚でAEDの正しい使い方を学べます。</p><a class="more" href="#quiz">下のクイズに挑戦 ↓</a></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ 小説 ═══ -->
-<section id="novels">
+<!-- ═══ READING ROOM ═══ -->
+<section id="reading">
   <div class="wrap">
-    <p class="kicker">🏆 note創作大賞2026 応募作</p>
-    <h2>物語で、AEDを感じる。</h2>
-    <p class="sec-lead">SF、ミステリー、ラブコメ、青春――ジャンルを超えてAEDを描いた5つの作品を公開中。すべてnoteで無料で読めます。</p>
+    <div class="section-heading"><p class="eyebrow">AED Reading Room ・ note創作大賞2026 応募作</p><h2>物語で、AEDを感じる。</h2><p class="small-note">SF、ミステリー、ラブコメ、青春――ジャンルを超えてAEDを描いた5つの作品。すべてnoteで無料で読めます。</p></div>
     <div class="grid grid-2">
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/happy_ferret214/n/n98c0e5e5c1f7" target="_blank" rel="noopener"><span class="tag">SF</span><h3>電流</h3><p>AEDに宿った意識「電次」に導かれ、過去の後悔と向き合いながら人を救い続ける男の物語。</p><span class="more" style="color:var(--teal-dark);font-weight:700">noteで読む →</span></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/happy_ferret214/n/n05fece7836a3" target="_blank" rel="noopener"><span class="tag">ミステリー</span><h3>解析できません――心臓の言語――</h3><p>「解析できません」と繰り返す機械の裏にある、動物用AEDが存在しない現実と獣医師の秘密に迫る社会派ミステリー。</p><span class="more" style="color:var(--teal-dark);font-weight:700">noteで読む →</span></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/happy_ferret214/n/n79dc363e0f93" target="_blank" rel="noopener"><span class="tag">近未来青春</span><h3>SKYDROP──空を、落とせ</h3><p>AEDドローンが命の優先順位を決める近未来、手動操縦の異端児パイロットが挑む熱血レース。</p><span class="more" style="color:var(--teal-dark);font-weight:700">noteで読む →</span></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/happy_ferret214/n/nfe4a149ed1dc" target="_blank" rel="noopener"><span class="tag">ディストピアSF</span><h3>適切な死——AEDが消えた世界の記録——</h3><p>AEDが姿を消して百年後の世界。AI管理の外側で、人が人を救おうとする意志を取り戻す群像劇。</p><span class="more" style="color:var(--teal-dark);font-weight:700">noteで読む →</span></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/happy_ferret214/n/na02a67ff9a2a" target="_blank" rel="noopener"><span class="tag">ラブコメ</span><h3>その箱、命が入ってます。</h3><p>誕生日にAEDを贈るという斜め上の選択をした男。だがその夜、路地裏で本当に人が倒れる――笑って泣ける物語。</p><span class="more" style="color:var(--teal-dark);font-weight:700">noteで読む →</span></a>
-      <div class="card" style="background:var(--teal-bg);border-color:transparent"><div class="icon">🦊</div><h3>AEDくんより</h3><p>「AEDって難しそう…って思ってない？ 実は音声ガイドがついてて、誰でも使えるんだよ。大切なのは『知っている』こと。それだけで命が救える！」</p><a class="more" href="https://note.com/happy_ferret214" target="_blank" rel="noopener">くわしく学ぶ →</a></div>
+      <a class="card" href="https://note.com/happy_ferret214/n/n98c0e5e5c1f7" target="_blank" rel="noopener"><span class="tag">SF</span><h3>電流</h3><p>AEDに宿った意識「電次」に導かれ、過去の後悔と向き合いながら人を救い続ける男の物語。</p><span class="more">noteで読む ↗</span></a>
+      <a class="card" href="https://note.com/happy_ferret214/n/n05fece7836a3" target="_blank" rel="noopener"><span class="tag">ミステリー</span><h3>解析できません――心臓の言語――</h3><p>「解析できません」と繰り返す機械の裏にある、動物用AEDが存在しない現実と獣医師の秘密に迫る社会派ミステリー。</p><span class="more">noteで読む ↗</span></a>
+      <a class="card" href="https://note.com/happy_ferret214/n/n79dc363e0f93" target="_blank" rel="noopener"><span class="tag">近未来青春</span><h3>SKYDROP──空を、落とせ</h3><p>AEDドローンが命の優先順位を決める近未来、手動操縦の異端児パイロットが挑む熱血レース。</p><span class="more">noteで読む ↗</span></a>
+      <a class="card" href="https://note.com/happy_ferret214/n/nfe4a149ed1dc" target="_blank" rel="noopener"><span class="tag">ディストピアSF</span><h3>適切な死——AEDが消えた世界の記録——</h3><p>AEDが姿を消して百年後の世界。AI管理の外側で、人が人を救おうとする意志を取り戻す群像劇。</p><span class="more">noteで読む ↗</span></a>
+      <a class="card" href="https://note.com/happy_ferret214/n/na02a67ff9a2a" target="_blank" rel="noopener"><span class="tag">ラブコメ</span><h3>その箱、命が入ってます。</h3><p>誕生日にAEDを贈るという斜め上の選択をした男。だがその夜、路地裏で本当に人が倒れる――笑って泣ける物語。</p><span class="more">noteで読む ↗</span></a>
+      <div class="card"><span class="tag">AEDくんより</span><h3>ぼくのことを、もっと知ってほしい！</h3><p>「AEDって難しそう…って思ってない？ 実は音声ガイドがついてて、誰でも使えるんだよ。大切なのは『知っている』こと。それだけで命が救える！」</p><a class="more" href="https://note.com/happy_ferret214" target="_blank" rel="noopener">くわしく学ぶ ↗</a></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ マップ・制作物 ═══ -->
-<section class="alt" id="works">
+<!-- ═══ MAP & GUIDE ═══ -->
+<section id="map">
   <div class="wrap">
-    <p class="kicker">WORKS</p>
-    <h2>マップ・ガイドブック</h2>
+    <div class="section-heading"><p class="eyebrow">Map &amp; Guidebook</p><h2>街を歩いて、AEDを知る。</h2></div>
     <div class="grid grid-2">
-      <div class="card"><span class="tag">制作物 ・ 継続中</span><h3>いのちを守る立川さんぽ ― 安心して歩ける街</h3><p>立川市内612箇所のAED設置場所を掲載したガイドブック。聖地巡礼コースや夜間利用できるAED情報なども収録。街を歩きながらAEDを知る新しい形の普及活動です。</p><a class="more" href="https://zizzo0207080109100216-beep.github.io/sanpo5/" target="_blank" rel="noopener">📖 ガイドを見る →</a></div>
-      <div class="card"><span class="tag teal">講演実績</span><h3>地域高校での講演</h3><p>AEDの重要さと、1人1人がオリジナルのAEDマップを作成するワークショップを実施。生徒たちが自分の通学路や生活圏のAED設置場所を調べ、命を守る地図を完成させました。</p><p style="margin-top:8px;color:var(--muted)">📍 立川市・杉並区・都内各地</p></div>
+      <div class="card"><span class="tag">制作物 ・ 継続中</span><h3>いのちを守る立川さんぽ ― 安心して歩ける街</h3><p>立川市内612箇所のAED設置場所を掲載したガイドブック。聖地巡礼コースや夜間利用できるAED情報なども収録。街を歩きながらAEDを知る新しい形の普及活動です。</p><a class="more" href="https://zizzo0207080109100216-beep.github.io/sanpo5/" target="_blank" rel="noopener">ガイドを見る ↗</a></div>
+      <div class="card"><span class="tag">講演実績</span><h3>地域高校での講演</h3><p>AEDの重要さと、1人1人がオリジナルのAEDマップを作成するワークショップを実施。生徒たちが自分の通学路や生活圏のAED設置場所を調べ、命を守る地図を完成させました。</p><p class="small-note" style="margin-top:10px">立川市・杉並区・都内各地</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ クイズ（元のクイズから最初の5問をそのまま収録） ═══ -->
+<!-- ═══ QUIZ ═══ -->
 <section id="quiz">
   <div class="wrap">
-    <p class="kicker">QUIZ</p>
-    <h2>AEDクイズ ― まず5問</h2>
-    <p class="sec-lead">選ぶと、すぐに答えと解説が出ます。全問正解できれば、あなたはAED知識の持ち主。さあ挑戦。</p>
+    <div class="section-heading"><p class="eyebrow">Quiz</p><h2>AEDクイズ ― まず5問</h2><p class="small-note">選ぶと、すぐに答えと解説が出ます。全問正解できれば、あなたはAED知識の持ち主。さあ挑戦。</p></div>
     <div id="quiz-list"></div>
     <div class="card" style="text-align:center">
       <h3>あなたの街のAEDを知ろう！都道府県別クイズ</h3>
       <p>ヒントから都道府県を当てるクイズ形式で、地域ごとのAED普及エピソードを学べます。全5問。あなたの地元は出るかも？</p>
-      <p style="margin-top:12px"><a class="btn btn-red" href="https://note.com/happy_ferret214/n/ne8fc4003b1e3" target="_blank" rel="noopener">noteで挑戦する →</a></p>
+      <p style="margin-top:16px"><a class="button" href="https://note.com/happy_ferret214/n/ne8fc4003b1e3" target="_blank" rel="noopener">noteで挑戦する <span>↗</span></a></p>
     </div>
   </div>
 </section>
 
-<!-- ═══ 掲載実績 ═══ -->
-<section class="alt" id="media">
+<!-- ═══ TIMELINE ═══ -->
+<section id="timeline">
   <div class="wrap">
-    <p class="kicker">COVERAGE</p>
-    <h2>掲載・紹介実績</h2>
-    <p class="sec-lead">ありがたいことに、複数のメディアや地域情報誌に取り上げていただきました。</p>
+    <div class="section-heading"><p class="eyebrow">Timeline</p><h2>AEDひろめ隊のあゆみ</h2></div>
+    <ol class="timeline">
+      <li><span class="t-num">1.</span><span class="t-date">2004</span><div class="t-body"><h3>初めての心停止。</h3><p>プールの監視員として心停止に遭遇。AEDを使えなかったが、居合わせた人たちの行動で助けることができた。活動の原点。</p></div></li>
+      <li><span class="t-num">2.</span><span class="t-date">立川</span><div class="t-body"><h3>ガイドブック、刊行。</h3><p>立川市内612箇所のAED設置場所を掲載した「いのちを守る立川さんぽ」を制作。街歩きとAEDを結ぶ普及活動が始まる。</p></div></li>
+      <li><span class="t-num">3.</span><span class="t-date">2024.08</span><div class="t-body"><h3>えくてびあんに掲載。</h3><p>地域情報誌「えくてびあん」の「街を歩けば」で、AED設置場所を地図に落とし込む活動が紹介される。</p></div></li>
+      <li><span class="t-num">4.</span><span class="t-date">講演</span><div class="t-body"><h3>高校生、約300名へ。</h3><p>地域高校で講演とAEDマップ作製ワークショップを実施。生徒たちが自分の生活圏の「命を守る地図」を完成させた。</p></div></li>
+      <li><span class="t-num">5.</span><span class="t-date">現在</span><div class="t-body"><h3>物語と地図で、広げ続ける。</h3><p>note創作大賞への応募作5作品を公開し、小説・ゲーム・マップでAEDを届け続けている。杉並区など活動の場も広がっている。</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═══ COVERAGE ═══ -->
+<section id="coverage">
+  <div class="wrap">
+    <div class="section-heading"><p class="eyebrow">Coverage</p><h2>掲載・紹介実績</h2><p class="small-note">ありがたいことに、複数のメディアや地域情報誌に取り上げていただきました。</p></div>
     <div class="grid grid-2">
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/ecoutez_bien/n/n38cdda04eaa8" target="_blank" rel="noopener"><h3>📰 えくてびあん（地域情報誌）</h3><p>地域コミュニティ誌にAED普及活動が掲載。「街を歩けば ― AEDがある場所、知ってますか（2024年8月号）」。noteのマガジン内に収録されているので、ページ内で記事タイトルを検索してください。</p><span style="color:var(--teal-dark);font-weight:700">note版で読む →</span></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://iine-tachikawa.net/matome/122993/" target="_blank" rel="noopener"><h3>🌐 いいね！立川</h3><p>立川市の地域情報サイト「いいね！立川」にてAED普及活動が紹介されました。</p><span style="color:var(--teal-dark);font-weight:700">記事を読む →</span></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://tachikawa-akishima.goguynet.jp/2024/06/01/aed/" target="_blank" rel="noopener"><h3>📱 地域NEWS 号外NET 立川市・昭島市</h3><p>地域ニュースメディア「号外NET」にてAEDガイドブックと活動内容が紹介。</p><span style="color:var(--teal-dark);font-weight:700">記事を読む →</span></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://machinet-tachikawa.org/%E3%80%90%E3%81%93%E3%82%93%E3%81%AA%E3%81%93%E3%81%A8%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%EF%BC%81%E3%80%91-%E7%89%A9%E8%AA%9E%E3%81%A8%E5%9C%B0%E5%9B%B3%E3%81%A7%E4%BC%9D%E3%81%88%E3%82%8B%E3%80%81/" target="_blank" rel="noopener"><h3>🏙️ たちかわまちねっとWeb（立川市社会福祉協議会）</h3><p>「物語と地図で伝える、心理的障壁を取り払うAED啓発」として活動が紹介。出前講座・ワークショップの受付も掲載。</p><span style="color:var(--teal-dark);font-weight:700">掲載ページを読む →</span></a>
+      <a class="card" href="https://note.com/ecoutez_bien/n/n38cdda04eaa8" target="_blank" rel="noopener"><h3>えくてびあん（地域情報誌）</h3><p>「街を歩けば ― AEDがある場所、知ってますか（2024年8月号）」。地域コミュニティ誌にAED普及活動が掲載。noteのマガジン内に収録されているので、ページ内で記事タイトルを検索してください。</p><span class="more">note版で読む ↗</span></a>
+      <a class="card" href="https://iine-tachikawa.net/matome/122993/" target="_blank" rel="noopener"><h3>いいね！立川</h3><p>立川市の地域情報サイト「いいね！立川」にてAED普及活動が紹介されました。</p><span class="more">記事を読む ↗</span></a>
+      <a class="card" href="https://tachikawa-akishima.goguynet.jp/2024/06/01/aed/" target="_blank" rel="noopener"><h3>地域NEWS 号外NET 立川市・昭島市</h3><p>地域ニュースメディア「号外NET」にてAEDガイドブックと活動内容が紹介。</p><span class="more">記事を読む ↗</span></a>
+      <a class="card" href="https://machinet-tachikawa.org/%E3%80%90%E3%81%93%E3%82%93%E3%81%AA%E3%81%93%E3%81%A8%E3%81%A7%E3%81%8D%E3%81%BE%E3%81%99%EF%BC%81%E3%80%91-%E7%89%A9%E8%AA%9E%E3%81%A8%E5%9C%B0%E5%9B%B3%E3%81%A7%E4%BC%9D%E3%81%88%E3%82%8B%E3%80%81/" target="_blank" rel="noopener"><h3>たちかわまちねっとWeb（立川市社会福祉協議会）</h3><p>「物語と地図で伝える、心理的障壁を取り払うAED啓発」として活動が紹介。出前講座・ワークショップの受付も掲載。</p><span class="more">掲載ページを読む ↗</span></a>
     </div>
   </div>
 </section>
 
-<!-- ═══ 最近のnote ═══ -->
+<!-- ═══ NOTE ═══ -->
 <section id="note">
   <div class="wrap">
-    <p class="kicker">BLOG / NOTE</p>
-    <h2>最近のnote</h2>
-    <p class="sec-lead">ユーモアと本気が混在する、AED普及活動の記録。AEDライブラリー（基礎知識・設置場所・小説・漫才・ゲームなど全カテゴリー）はnoteで検索・閲覧できます。</p>
+    <div class="section-heading"><p class="eyebrow">Blog / Note</p><h2>最近のnote</h2><p class="small-note">ユーモアと本気が混在する、AED普及活動の記録。AEDライブラリー（基礎知識・設置場所・小説・漫才・ゲームなど全カテゴリー）はnoteで検索・閲覧できます。</p></div>
     <div class="grid grid-3">
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/happy_ferret214/n/n016840fd85d8" target="_blank" rel="noopener"><span class="tag">AED基礎</span><h3 style="font-size:17px">AEDを武器として使わないでください — 漫画・映画の誤描写まとめ</h3><p style="color:var(--muted);font-size:14px">2025年5月 ・ note</p></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/happy_ferret214/n/n8d48ec79ee39" target="_blank" rel="noopener"><span class="tag teal">設置場所</span><h3 style="font-size:17px">プロジェクトAED「乱立する救命地図、命を繋ぐ挑戦」</h3><p style="color:var(--muted);font-size:14px">2025年10月 ・ note ・ ❤️98</p></a>
-      <a class="card" style="text-decoration:none;color:inherit" href="https://note.com/happy_ferret214/n/n979a3689add8" target="_blank" rel="noopener"><span class="tag">小説</span><h3 style="font-size:17px">『その手の意味を、僕は知っていた』— 手話×AED短編小説</h3><p style="color:var(--muted);font-size:14px">2025年5月 ・ note ・ ❤️113</p></a>
+      <a class="card" href="https://note.com/happy_ferret214/n/n016840fd85d8" target="_blank" rel="noopener"><span class="tag">AED基礎</span><h3 style="font-size:17px">AEDを武器として使わないでください — 漫画・映画の誤描写まとめ</h3><p class="small-note">2025年5月 ・ note</p></a>
+      <a class="card" href="https://note.com/happy_ferret214/n/n8d48ec79ee39" target="_blank" rel="noopener"><span class="tag">設置場所</span><h3 style="font-size:17px">プロジェクトAED「乱立する救命地図、命を繋ぐ挑戦」</h3><p class="small-note">2025年10月 ・ note ・ ❤️98</p></a>
+      <a class="card" href="https://note.com/happy_ferret214/n/n979a3689add8" target="_blank" rel="noopener"><span class="tag">小説</span><h3 style="font-size:17px">『その手の意味を、僕は知っていた』— 手話×AED短編小説</h3><p class="small-note">2025年5月 ・ note ・ ❤️113</p></a>
     </div>
-    <p style="text-align:center;margin-top:24px"><a class="btn btn-teal" href="https://note.com/happy_ferret214" target="_blank" rel="noopener">noteで全記事を読む ↗</a></p>
+    <p style="text-align:center;margin-top:28px"><a class="button ghost" href="https://note.com/happy_ferret214" target="_blank" rel="noopener">noteで全記事を読む <span>↗</span></a></p>
   </div>
 </section>
 
-<!-- ═══ Contact ═══ -->
-<section id="contact" style="padding-top:8px">
+<!-- ═══ ABOUT THIS PLACE / CONTACT ═══ -->
+<section id="contact">
   <div class="wrap">
-    <div class="contact">
-      <h2>一緒にAEDを広めませんか？</h2>
-      <p>出前講座・取材・コラボレーション・AED設置の相談など、なんでもお気軽にどうぞ。返信は必ずします。</p>
-      <a class="btn" href="mailto:zizzo0207080109100216@gmail.com">✉️ zizzo0207080109100216@gmail.com</a>
-      <p style="margin-top:16px;font-size:15px">担当：小野塚 健一郎（おのづか けんいちろう）</p>
+    <div class="section-heading"><p class="eyebrow">About This Place</p><h2>この場所について</h2></div>
+    <div class="about-place">
+      <p>「知っている」を眺めて、記録して、誰かに手渡す場所。</p>
+      <p>AEDひろめ隊は、小野塚健一郎が個人で続けるAED普及活動です。このサイトは、その活動の公式な置き場所として、マップ・物語・記録を少しずつ集めています。</p>
+    </div>
+    <div class="contact-box">
+      <p class="eyebrow" style="margin-bottom:12px">Contact</p>
+      <h2 style="font-size:24px;letter-spacing:.08em;margin-bottom:14px">一緒にAEDを広めませんか？</h2>
+      <p style="color:#4c5157;max-width:560px;margin:0 auto 20px">出前講座・取材・コラボレーション・AED設置の相談など、なんでもお気軽にどうぞ。返信は必ずします。</p>
+      <a class="mail" href="mailto:zizzo0207080109100216@gmail.com">zizzo0207080109100216@gmail.com</a>
+      <p class="small-note" style="margin-top:16px">担当：小野塚 健一郎（おのづか けんいちろう）</p>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <p><strong style="color:var(--ink)">💗 AEDひろめ隊</strong> ｜ 立川市を拠点に、個人でAED普及活動を続けています。</p>
-    <p style="margin-top:8px">運営：小野塚健一郎 ｜ <a href="https://note.com/happy_ferret214" target="_blank" rel="noopener">note</a> ｜ <a href="#quiz">クイズ</a> ｜ <a href="#works">マップ・制作物</a></p>
-    <p style="margin-top:8px">© 2026 AEDひろめ隊</p>
+    <p class="fbrand">AEDひろめ隊</p>
+    <p>立川市を拠点に、個人でAED普及活動を続けています。</p>
+    <p style="margin-top:10px">運営：小野塚健一郎 ｜ <a href="https://note.com/happy_ferret214" target="_blank" rel="noopener">note</a> ｜ <a href="#quiz">クイズ</a> ｜ <a href="#map">マップ・制作物</a></p>
+    <p style="margin-top:10px">© 2026 AEDひろめ隊</p>
   </div>
 </footer>
 
