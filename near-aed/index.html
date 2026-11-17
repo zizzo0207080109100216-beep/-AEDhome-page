@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>近くのAED｜AEDひろめ隊</title>
+<style>
+  :root { --red:#E60012; --dark:#222; --gray:#666; --bg:#FFF5F5; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; color:var(--dark); background:#fff; }
+  header { background:var(--red); color:#fff; padding:16px; }
+  header h1 { margin:0; font-size:24px; }
+  header p { margin:4px 0 0; font-size:13px; opacity:.9; }
+  .alert { background:#FFF3CD; border-bottom:2px solid #E6A817; padding:10px 16px; font-size:14px; font-weight:bold; }
+  main { padding:16px; max-width:640px; margin:0 auto; }
+  #locateBtn { display:block; width:100%; padding:18px; font-size:20px; font-weight:bold; color:#fff; background:var(--red); border:none; border-radius:12px; cursor:pointer; }
+  #locateBtn:active { opacity:.85; }
+  #status { min-height:1.4em; margin:12px 0; font-size:14px; color:var(--gray); text-align:center; }
+  #search { width:100%; padding:12px; font-size:16px; border:2px solid #ccc; border-radius:8px; margin-bottom:12px; }
+  .card { border:1px solid #eee; border-left:6px solid var(--red); border-radius:8px; padding:12px 14px; margin-bottom:10px; background:var(--bg); }
+  .card h2 { margin:0 0 4px; font-size:17px; }
+  .dist { color:var(--red); font-weight:bold; font-size:15px; }
+  .desc { font-size:13px; color:var(--gray); margin:4px 0 8px; }
+  .route { display:inline-block; padding:8px 14px; background:var(--red); color:#fff; text-decoration:none; border-radius:6px; font-size:14px; font-weight:bold; }
+  footer { padding:16px; font-size:12px; color:var(--gray); text-align:center; }
+</style>
+</head>
+<body>
+<header>
+  <h1>近くのAED</h1>
+  <p>AEDひろめ隊｜立川周辺9市のAED設置場所</p>
+</header>
+<div class="alert">緊急時はまず119番通報を。このページの情報は目安です。</div>
+<main>
+  <button id="locateBtn">📍 現在地から探す</button>
+  <p id="status"></p>
+  <input id="search" type="search" placeholder="施設名で検索（例：立川市役所）">
+  <div id="results"></div>
+</main>
+<footer>データ：AEDひろめ隊 AEDマップ（立川市・国立市・東大和市・国分寺市・小平市・福生市・日野市・武蔵村山市・昭島市）</footer>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  var LIMIT = 15;
+  var resultsEl = document.getElementById('results');
+  var statusEl = document.getElementById('status');
+  var searchEl = document.getElementById('search');
+  var currentPos = null; // {lat, lng} or null
+
+  function haversine(lat1, lng1, lat2, lng2) {
+    var R = 6371000, toRad = Math.PI / 180;
+    var dLat = (lat2 - lat1) * toRad, dLng = (lng2 - lng1) * toRad;
+    var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1 * toRad) * Math.cos(lat2 * toRad) *
+            Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    return 2 * R * Math.asin(Math.sqrt(a));
+  }
+
+  function fmtDist(m) {
+    if (m < 1000) return Math.round(m / 10) * 10 + 'm';
+    return (m / 1000).toFixed(1) + 'km';
+  }
+
+  function filtered() {
+    var q = searchEl.value.trim();
+    var list = AED_DATA.filter(function (p) { return !q || p.name.indexOf(q) !== -1; });
+    if (currentPos) {
+      list = list.map(function (p) {
+        return { p: p, d: haversine(currentPos.lat, currentPos.lng, p.lat, p.lng) };
+      }).sort(function (a, b) { return a.d - b.d; })
+        .map(function (x) { x.p._d = x.d; return x.p; });
+    } else {
+      list.sort(function (a, b) { return a.name.localeCompare(b.name, 'ja'); });
+      list.forEach(function (p) { delete p._d; });
+    }
+    return list;
+  }
+
+  function render() {
+    var list = filtered().slice(0, LIMIT);
+    if (!list.length) {
+      resultsEl.innerHTML = '<p>見つかりませんでした。検索のことばを変えてみてください。</p>';
+      return;
+    }
+    resultsEl.innerHTML = list.map(function (p) {
+      var dist = (typeof p._d === 'number') ? '<span class="dist">約' + fmtDist(p._d) + '</span>' : '';
+      var desc = p.desc ? '<p class="desc">' + p.desc.replace(/</g, '&lt;') + '</p>' : '';
+      var url = 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng;
+      return '<div class="card"><h2>' + p.name.replace(/</g, '&lt;') + '</h2>' + dist + desc +
+             '<br><a class="route" href="' + url + '" target="_blank" rel="noopener">経路を開く</a></div>';
+    }).join('');
+  }
+
+  searchEl.addEventListener('input', render);
+
+  document.getElementById('locateBtn').addEventListener('click', function () {
+    if (!navigator.geolocation) {
+      statusEl.textContent = 'この端末では位置情報が使えません。施設名の検索か下のリストを使ってください（名前順）。';
+      currentPos = null; render(); return;
+    }
+    statusEl.textContent = '現在地を取得中です…';
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      currentPos = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+      statusEl.textContent = '現在地から近い順に表示しています（直線距離）。';
+      render();
+    }, function () {
+      currentPos = null;
+      statusEl.textContent = '位置情報が取得できませんでした。距離順で探すには位置情報の許可が必要です。下は施設名の順（名前順）で表示しています。';
+      render();
+    }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 60000 });
+  });
+
+  render(); // 初期表示：名前順リスト
+})();
+</script>
+</body>
+</html>
