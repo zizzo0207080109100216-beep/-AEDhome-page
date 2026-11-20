@@ -21,6 +21,15 @@
   .card h2 { margin:0 0 4px; font-size:17px; }
   .dist { color:var(--red); font-weight:bold; font-size:15px; }
   .desc { font-size:13px; color:var(--gray); margin:4px 0 8px; }
+  .hours { font-size:13px; color:var(--dark); margin:4px 0 8px; }
+  .badge { display:inline-block; font-size:12px; font-weight:bold; color:#fff; border-radius:4px; padding:2px 8px; margin-left:8px; vertical-align:middle; }
+  .b24 { background:#1a9e54; }
+  .bopen { background:#1a9e54; }
+  .bshut { background:#888; }
+  .bclosed { background:#b00020; }
+  .filter { display:block; font-size:15px; margin:0 0 12px; }
+  .filter input { width:18px; height:18px; vertical-align:middle; }
+  .filternote { font-size:12px; color:var(--gray); margin:-6px 0 12px; }
   .route { display:inline-block; padding:8px 14px; background:var(--red); color:#fff; text-decoration:none; border-radius:6px; font-size:14px; font-weight:bold; }
   footer { padding:16px; font-size:12px; color:var(--gray); text-align:center; }
 </style>
@@ -35,9 +44,11 @@
   <button id="locateBtn">📍 現在地から探す</button>
   <p id="status"></p>
   <input id="search" type="search" placeholder="施設名で検索（例：立川市役所）">
+  <label class="filter"><input type="checkbox" id="availOnly"> いま使えるものだけ表示</label>
+  <p class="filternote">※利用可能時間が分かっている施設だけが対象です。休館日・祝日の扱いは各施設の表示を確認してください。</p>
   <div id="results"></div>
 </main>
-<footer>データ：AEDひろめ隊 AEDマップ</footer>
+<footer>データ：AEDひろめ隊 AEDマップ<br>利用可能時間は立川市公式情報に基づき、立川市の一部施設のみ表示しています（2026年11月20日調査）</footer>
 
 <script src="data.js"></script>
 <script>
@@ -62,9 +73,22 @@
     return (m / 1000).toFixed(1) + 'km';
   }
 
+  function usableNow(p) {
+    if (p.avail === '24h') return true;
+    if (p.avail === 'closed') return false;
+    if (typeof p.open === 'number' && typeof p.close === 'number') {
+      var now = new Date();
+      var t = now.getHours() * 60 + now.getMinutes();
+      return t >= p.open && t < p.close;
+    }
+    return null; // 判定できない
+  }
+
   function filtered() {
     var q = searchEl.value.trim();
+    var availOnly = document.getElementById('availOnly').checked;
     var list = AED_DATA.filter(function (p) { return !q || p.name.indexOf(q) !== -1; });
+    if (availOnly) list = list.filter(function (p) { return usableNow(p) === true; });
     if (currentPos) {
       list = list.map(function (p) {
         return { p: p, d: haversine(currentPos.lat, currentPos.lng, p.lat, p.lng) };
@@ -86,13 +110,19 @@
     resultsEl.innerHTML = list.map(function (p) {
       var dist = (typeof p._d === 'number') ? '<span class="dist">約' + fmtDist(p._d) + '</span>' : '';
       var desc = p.desc ? '<p class="desc">' + p.desc.replace(/</g, '&lt;') + '</p>' : '';
+      var badge = '';
+      if (p.avail === 'closed') badge = '<span class="badge bclosed">休館中</span>';
+      else if (p.avail === '24h') badge = '<span class="badge b24">24時間</span>';
+      else if (typeof p.open === 'number') badge = usableNow(p) ? '<span class="badge bopen">いま時間内</span>' : '<span class="badge bshut">いま時間外</span>';
+      var hours = p.hours ? '<p class="hours">利用可能時間：' + p.hours.replace(/</g, '&lt;') + '</p>' : '';
       var url = 'https://www.google.com/maps/dir/?api=1&destination=' + p.lat + ',' + p.lng;
-      return '<div class="card"><h2>' + p.name.replace(/</g, '&lt;') + '</h2>' + dist + desc +
+      return '<div class="card"><h2>' + p.name.replace(/</g, '&lt;') + badge + '</h2>' + dist + desc + hours +
              '<br><a class="route" href="' + url + '" target="_blank" rel="noopener">経路を開く</a></div>';
     }).join('');
   }
 
   searchEl.addEventListener('input', render);
+  document.getElementById('availOnly').addEventListener('change', render);
 
   document.getElementById('locateBtn').addEventListener('click', function () {
     if (!navigator.geolocation) {
