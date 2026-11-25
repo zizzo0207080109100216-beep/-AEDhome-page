@@ -157,6 +157,7 @@ footer a{margin:0 9px}
 .movie-no{display:inline-block;background:#a83a24;color:#fff;border-radius:999px;padding:2px 12px;font-size:13px;margin-right:8px;vertical-align:2px}
 .movie-card video{width:100%;border-radius:12px;display:block;background:#111;box-shadow:0 4px 18px rgba(60,40,20,.18)}
 .movie-feature{margin-bottom:22px}.movie-feature .movie-card h3{font-size:20px}.movie-feature video{width:100%;border-radius:12px;display:block;background:#111;box-shadow:0 4px 18px rgba(60,40,20,.18)}
+.quiz-stage-sec{padding:28px 0 6px}.quiz-stage{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#111;box-shadow:0 6px 24px rgba(60,40,20,.22)}.qs-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}.qs-video.active{opacity:1}.qs-caption{position:absolute;left:14px;bottom:14px;z-index:2;background:rgba(20,14,10,.72);color:#fff;border-radius:999px;padding:7px 16px 7px 8px;font-size:15px;display:flex;align-items:center;gap:4px;max-width:92%}.qs-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:12px;flex-wrap:wrap}.qs-dots{display:flex;gap:8px}.qs-dot{width:11px;height:11px;border-radius:50%;border:1px solid #a83a24;background:transparent;padding:0;cursor:pointer}.qs-dot.active{background:#a83a24}.qs-note{font-size:13px;color:#6b6f75;letter-spacing:.05em;margin:0}@media(max-width:640px){.quiz-stage-sec{padding:16px 0 2px}.qs-caption{font-size:13px;left:10px;bottom:10px}}
 </style>
 </head>
 <body>
@@ -175,6 +176,39 @@ footer a{margin:0 9px}
   <div class="header-note">知っている人が、命を救う。</div>
 </header>
 
+<section id="quiz-movie" class="quiz-stage-sec">
+  <div class="wrap">
+    <div class="quiz-stage">
+      <video class="qs-video active" src="aed-quiz-1.mp4" poster="aed-quiz-1.jpg" muted loop playsinline autoplay preload="auto"></video><video class="qs-video" src="aed-quiz-2.mp4" poster="aed-quiz-2.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-3.mp4" poster="aed-quiz-3.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-4.mp4" poster="aed-quiz-4.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-5.mp4" poster="aed-quiz-5.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-6.mp4" poster="aed-quiz-6.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-7.mp4" poster="aed-quiz-7.jpg" muted loop playsinline preload="none"></video>
+      <div class="qs-caption"><span class="movie-no" id="qsNo">その1</span><span id="qsTheme">「ショックは不要です」って、どういうこと？</span></div>
+    </div>
+    <div class="qs-bar"><div class="qs-dots"><button class="qs-dot active" data-i="0" aria-label="その1"></button><button class="qs-dot" data-i="1" aria-label="その2"></button><button class="qs-dot" data-i="2" aria-label="その3"></button><button class="qs-dot" data-i="3" aria-label="その4"></button><button class="qs-dot" data-i="4" aria-label="その5"></button><button class="qs-dot" data-i="5" aria-label="その6"></button><button class="qs-dot" data-i="6" aria-label="その7"></button></div><p class="qs-note">AEDクイズ動画 ― 誤解をとく7本（音は出ません）</p></div>
+  </div>
+</section>
+<script>
+(function(){
+  var themes = ['「ショックは不要です」って、どういうこと？', '苦しい人に、AEDを貼ったら？', '意識がもうろう…それでも貼る？', 'AEDは心臓を動かさない', '免許がなくても使える理由', '「ショック不要」は、無事じゃない', '回復体位って、どれ？'];
+  var vids = Array.prototype.slice.call(document.querySelectorAll('.qs-video'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('.qs-dot'));
+  var noEl = document.getElementById('qsNo'), thEl = document.getElementById('qsTheme');
+  var cur = 0, timer = null;
+  function show(n){
+    vids[cur].classList.remove('active'); vids[cur].pause(); dots[cur].classList.remove('active');
+    cur = (n + vids.length) % vids.length;
+    var v = vids[cur];
+    v.classList.add('active'); dots[cur].classList.add('active');
+    noEl.textContent = 'その' + (cur + 1); thEl.textContent = themes[cur];
+    if (v.readyState === 0) { v.preload = 'auto'; v.load(); }
+    var p = v.play(); if (p) { p.catch(function(){}); }
+  }
+  function start(){ timer = setInterval(function(){ show(cur + 1); }, 14000); }
+  function reset(){ clearInterval(timer); start(); }
+  dots.forEach(function(d){ d.addEventListener('click', function(){ show(parseInt(d.getAttribute('data-i'), 10)); reset(); }); });
+  document.addEventListener('visibilitychange', function(){ if (document.hidden) { clearInterval(timer); vids[cur].pause(); } else { vids[cur].play().catch(function(){}); start(); } });
+  start();
+})();
+</script>
+
 <!-- ═══ HERO ═══ -->
 <div class="hero" id="top">
   <div class="wrap">
@@ -188,22 +222,7 @@ footer a{margin:0 9px}
   </div>
 </div>
 
-<section id="quiz-movie">
-  <div class="wrap">
-    <div class="section-heading"><p class="eyebrow">Quiz Movies</p><h2>AEDクイズ動画 ― 誤解をとく7本</h2></div>
-    <p class="movie-lead">AEDにまつわる「よくある誤解」を1本ずつ解く、短いクイズ動画です。音は出ません。気になるテーマからどうぞ。</p>
-    <div class="movie-feature"><div class="movie-card feature-card"><h3><span class="movie-no">その1</span>「ショックは不要です」って、どういうこと？</h3><video controls preload="none" poster="aed-quiz-1.jpg" src="aed-quiz-1.mp4"></video></div></div>
-    <div class="movie-grid">
-      
-      <div class="movie-card"><h3><span class="movie-no">その2</span>苦しい人に、AEDを貼ったら？</h3><video controls preload="none" poster="aed-quiz-2.jpg" src="aed-quiz-2.mp4"></video></div>
-      <div class="movie-card"><h3><span class="movie-no">その3</span>意識がもうろう…それでも貼る？</h3><video controls preload="none" poster="aed-quiz-3.jpg" src="aed-quiz-3.mp4"></video></div>
-      <div class="movie-card"><h3><span class="movie-no">その4</span>AEDは心臓を動かさない</h3><video controls preload="none" poster="aed-quiz-4.jpg" src="aed-quiz-4.mp4"></video></div>
-      <div class="movie-card"><h3><span class="movie-no">その5</span>免許がなくても使える理由</h3><video controls preload="none" poster="aed-quiz-5.jpg" src="aed-quiz-5.mp4"></video></div>
-      <div class="movie-card"><h3><span class="movie-no">その6</span>「ショック不要」は、無事じゃない</h3><video controls preload="none" poster="aed-quiz-6.jpg" src="aed-quiz-6.mp4"></video></div>
-      <div class="movie-card"><h3><span class="movie-no">その7</span>回復体位って、どれ？</h3><video controls preload="none" poster="aed-quiz-7.jpg" src="aed-quiz-7.mp4"></video></div>
-    </div>
-  </div>
-</section>
+
 
 <nav class="quick-nav wrap" style="width:100%">
   <a href="#profile">小野塚健一郎</a><a href="#can">できること</a><a href="#reading">小説 5作品</a><a href="#map">マップ・本</a><a href="#timeline">あゆみ</a><a href="#note">最近のnote</a>
