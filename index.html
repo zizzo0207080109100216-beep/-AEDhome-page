@@ -151,6 +151,11 @@ footer{padding:44px 0 52px;text-align:center}
 footer .fbrand{font-family:var(--serif);font-size:19px;letter-spacing:.12em;margin-bottom:10px}
 footer p{font-size:13px;color:var(--muted)}
 footer a{margin:0 9px}
+.movie-lead{font-size:16px;line-height:1.9;margin:0 0 22px}
+.movie-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.movie-card h3{font-size:17px;line-height:1.5;margin:0 0 10px;font-weight:700}
+.movie-no{display:inline-block;background:#a83a24;color:#fff;border-radius:999px;padding:2px 12px;font-size:13px;margin-right:8px;vertical-align:2px}
+.movie-card video{width:100%;border-radius:12px;display:block;background:#111;box-shadow:0 4px 18px rgba(60,40,20,.18)}
 </style>
 </head>
 <body>
@@ -179,12 +184,28 @@ footer a{margin:0 9px}
     <p class="lead">AEDは、電源を入れれば音声ガイドが教えてくれる、誰でも使える機械です。<br>ゲームで学んで、物語で感じて、街に広げよう。<br>立川市を拠点に、個人で続けるAED普及活動の記録。</p>
     <div class="hero-btns">
       <a class="button" href="https://www.google.com/maps/d/u/0/viewer?hl=ja&amp;mid=1azti_3lIAn9OZA0vOhLM8OoNybZLHuI&amp;ll=35.57682187629004%2C139.4189246&amp;z=11" target="_blank" rel="noopener">近くのAEDマップを見る <span>↗</span></a>
-      <a class="button ghost" style="color:#fff;border-color:#fff" href="#quiz">クイズで学ぶ</a>
+      <a class="button ghost" style="color:#fff;border-color:#fff" href="#quiz-movie">クイズで学ぶ</a>
     </div>
   </div>
   <div class="paper-note"><span class="tape"></span><p>怖くない。<br>知っていれば、<br>動ける。</p><small>AED HIROME-TAI</small></div>
   <div class="hero-caption">講演会の様子 ― 地域高校にて</div>
 </div>
+
+<section id="quiz-movie">
+  <div class="wrap">
+    <div class="section-heading"><p class="eyebrow">Quiz Movies</p><h2>AEDクイズ動画 ― 誤解をとく7本</h2></div>
+    <p class="movie-lead">AEDにまつわる「よくある誤解」を1本ずつ解く、短いクイズ動画です。音は出ません。気になるテーマからどうぞ。</p>
+    <div class="movie-grid">
+      <div class="movie-card"><h3><span class="movie-no">その1</span>「ショックは不要です」って、どういうこと？</h3><video controls preload="none" poster="aed-quiz-1.jpg" src="aed-quiz-1.mp4"></video></div>
+      <div class="movie-card"><h3><span class="movie-no">その2</span>苦しい人に、AEDを貼ったら？</h3><video controls preload="none" poster="aed-quiz-2.jpg" src="aed-quiz-2.mp4"></video></div>
+      <div class="movie-card"><h3><span class="movie-no">その3</span>意識がもうろう…それでも貼る？</h3><video controls preload="none" poster="aed-quiz-3.jpg" src="aed-quiz-3.mp4"></video></div>
+      <div class="movie-card"><h3><span class="movie-no">その4</span>AEDは心臓を動かさない</h3><video controls preload="none" poster="aed-quiz-4.jpg" src="aed-quiz-4.mp4"></video></div>
+      <div class="movie-card"><h3><span class="movie-no">その5</span>免許がなくても使える理由</h3><video controls preload="none" poster="aed-quiz-5.jpg" src="aed-quiz-5.mp4"></video></div>
+      <div class="movie-card"><h3><span class="movie-no">その6</span>「ショック不要」は、無事じゃない</h3><video controls preload="none" poster="aed-quiz-6.jpg" src="aed-quiz-6.mp4"></video></div>
+      <div class="movie-card"><h3><span class="movie-no">その7</span>回復体位って、どれ？</h3><video controls preload="none" poster="aed-quiz-7.jpg" src="aed-quiz-7.mp4"></video></div>
+    </div>
+  </div>
+</section>
 
 <nav class="quick-nav wrap" style="width:100%">
   <a href="#profile">小野塚健一郎</a><a href="#can">できること</a><a href="#reading">小説 5作品</a><a href="#map">マップ・本</a><a href="#timeline">あゆみ</a><a href="#note">最近のnote</a>
