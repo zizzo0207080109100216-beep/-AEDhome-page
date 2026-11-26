@@ -158,6 +158,7 @@ footer a{margin:0 9px}
 .movie-card video{width:100%;border-radius:12px;display:block;background:#111;box-shadow:0 4px 18px rgba(60,40,20,.18)}
 .movie-feature{margin-bottom:22px}.movie-feature .movie-card h3{font-size:20px}.movie-feature video{width:100%;border-radius:12px;display:block;background:#111;box-shadow:0 4px 18px rgba(60,40,20,.18)}
 .quiz-stage-sec{padding:28px 0 6px}.quiz-stage{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#111;box-shadow:0 6px 24px rgba(60,40,20,.22)}.qs-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease}.qs-video.active{opacity:1}.qs-caption{background:#fff;border:1px solid #e3ddd2;color:#33302b;border-radius:999px;padding:7px 16px 7px 8px;font-size:15px;display:flex;align-items:center;gap:4px;box-shadow:0 2px 8px rgba(60,40,20,.08)}.qs-bar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:12px;flex-wrap:wrap}.qs-dots{display:flex;gap:8px}.qs-dot{width:11px;height:11px;border-radius:50%;border:1px solid #a83a24;background:transparent;padding:0;cursor:pointer}.qs-dot.active{background:#a83a24}.qs-note{font-size:13px;color:#6b6f75;letter-spacing:.05em;margin:0}@media(max-width:640px){.quiz-stage-sec{padding:16px 0 2px}.qs-caption{font-size:13px}}
+.qs-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin-top:16px}.qs-item{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e3ddd2;border-radius:10px;padding:8px 12px 8px 8px;cursor:pointer;text-align:left;font:inherit;box-shadow:0 2px 8px rgba(60,40,20,.06)}.qs-item:hover{border-color:#a83a24}.qs-item img{width:64px;aspect-ratio:16/9;object-fit:cover;border-radius:6px;flex:none}.qs-item .movie-no{flex:none}.qs-item-theme{font-size:14px;line-height:1.5;color:#33302b}.cta-band{background:#a83a24;color:#fff;padding:52px 0;margin-top:34px}.cta-band h2{font-size:clamp(22px,3.4vw,30px);letter-spacing:.06em;margin:0 0 12px}.cta-band p{color:#f7e8e2;line-height:1.9;margin:0 0 24px;max-width:640px}.cta-btns{display:flex;gap:14px;flex-wrap:wrap}.cta-band .button{background:#fff;color:#a83a24;border-color:#fff}.cta-band .button.ghost{background:transparent;color:#fff;border-color:#fff}
 </style>
 </head>
 <body>
@@ -183,7 +184,9 @@ footer a{margin:0 9px}
       
     </div>
     <div class="qs-bar"><div class="qs-caption"><span class="movie-no" id="qsNo">その1</span><span id="qsTheme">「ショックは不要です」って、どういうこと？</span></div><div class="qs-dots"><button class="qs-dot active" data-i="0" aria-label="その1"></button><button class="qs-dot" data-i="1" aria-label="その2"></button><button class="qs-dot" data-i="2" aria-label="その3"></button><button class="qs-dot" data-i="3" aria-label="その4"></button><button class="qs-dot" data-i="4" aria-label="その5"></button><button class="qs-dot" data-i="5" aria-label="その6"></button><button class="qs-dot" data-i="6" aria-label="その7"></button></div><p class="qs-note">AEDクイズ動画 ― 誤解をとく7本（音は出ません）</p></div>
+    <div class="qs-list"><button class="qs-item" data-i="0"><img src="aed-quiz-1.jpg" alt=""><span class="movie-no">その1</span><span class="qs-item-theme">「ショックは不要です」って、どういうこと？</span></button><button class="qs-item" data-i="1"><img src="aed-quiz-2.jpg" alt=""><span class="movie-no">その2</span><span class="qs-item-theme">苦しい人に、AEDを貼ったら？</span></button><button class="qs-item" data-i="2"><img src="aed-quiz-3.jpg" alt=""><span class="movie-no">その3</span><span class="qs-item-theme">意識がもうろう…AEDは？</span></button><button class="qs-item" data-i="3"><img src="aed-quiz-4.jpg" alt=""><span class="movie-no">その4</span><span class="qs-item-theme">電気ショックのあと、何をする？</span></button><button class="qs-item" data-i="4"><img src="aed-quiz-5.jpg" alt=""><span class="movie-no">その5</span><span class="qs-item-theme">免許がなくても使える理由</span></button><button class="qs-item" data-i="5"><img src="aed-quiz-6.jpg" alt=""><span class="movie-no">その6</span><span class="qs-item-theme">「ショック不要」て言われた…</span></button><button class="qs-item" data-i="6"><img src="aed-quiz-7.jpg" alt=""><span class="movie-no">その7</span><span class="qs-item-theme">回復体位って、どれ？</span></button></div>
   </div>
+
 </section>
 <script>
 (function(){
@@ -216,10 +219,22 @@ footer a{margin:0 9px}
     v.addEventListener('ended', function(){ if (i === cur) show(cur + 1); });
   });
   dots.forEach(function(d){ d.addEventListener('click', function(){ show(parseInt(d.getAttribute('data-i'), 10)); }); });
+  Array.prototype.forEach.call(document.querySelectorAll('.qs-item'), function(b){ b.addEventListener('click', function(){ show(parseInt(b.getAttribute('data-i'), 10)); document.querySelector('.quiz-stage').scrollIntoView({ behavior: 'smooth', block: 'center' }); }); });
   document.addEventListener('visibilitychange', function(){ if (document.hidden) { vids[cur].pause(); } else { vids[cur].play().catch(function(){}); } });
   armFallback(vids[0], token);
 })();
 </script>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>あなたの近くのAED、わかりますか？</h2>
+    <p>夜、家の一番近くのAEDが分かるように。いざという時に開ける道具を、ここに置いています。</p>
+    <div class="cta-btns">
+      <a class="button" href="near-aed/">近くのAEDを探す</a>
+      <a class="button ghost" href="https://line.me/R/ti/p/@202ordar" target="_blank" rel="noopener">公式LINEで探す</a>
+    </div>
+  </div>
+</section>
 
 <!-- ═══ HERO ═══ -->
 <div class="hero" id="top">
@@ -380,7 +395,7 @@ footer a{margin:0 9px}
 <section id="note">
   <div class="wrap">
     <div class="section-heading"><p class="eyebrow">Blog / Note</p><h2>最近のnote</h2><p class="small-note">ユーモアと本気が混在する、AED普及活動の記録。AEDライブラリー（基礎知識・設置場所・小説・漫才・ゲームなど全カテゴリー）はnoteで検索・閲覧できます。</p></div>
-    <div class="grid grid-3">
+    <div class="grid grid-3" id="noteGrid">
       <a class="card" href="https://note.com/happy_ferret214/n/n205a3fcf0fce" target="_blank" rel="noopener"><span class="tag">AIエージェント</span><h3 style="font-size:17px">Museがすごいと聞いて、半信半疑でAED普及を手伝わせてみた</h3><p class="small-note">2026年11月22日 ・ note ・ ❤️11</p></a>
       <a class="card" href="https://note.com/happy_ferret214/n/n7c31eca574d6" target="_blank" rel="noopener"><span class="tag">アニメ感想文</span><h3 style="font-size:17px">クレヨンしんちゃんに出てくる交番の壁の「♡●●●」</h3><p class="small-note">2026年11月14日 ・ note ・ ❤️30</p></a>
       <a class="card" href="https://note.com/happy_ferret214/n/nd6e5bedea083" target="_blank" rel="noopener"><span class="tag">ドラマに映るAED</span><h3 style="font-size:17px">VIVANT第１シーズンにあって第２シーズンにないもの</h3><p class="small-note">2026年11月8日 ・ note ・ ❤️31</p></a>
@@ -454,6 +469,32 @@ QUIZ.forEach((item, i) => {
   card.appendChild(expl);
   list.appendChild(card);
 });
+</script>
+
+<script>
+(function(){
+  var grid = document.getElementById('noteGrid');
+  if (!grid) return;
+  var rss = 'https://note.com/happy_ferret214/rss';
+  fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent(rss))
+    .then(function(r){ if (!r.ok) throw new Error('bad'); return r.text(); })
+    .then(function(xml){
+      var doc = new DOMParser().parseFromString(xml, 'text/xml');
+      var items = doc.querySelectorAll('item');
+      if (!items.length) return;
+      var html = '';
+      for (var i = 0; i < Math.min(3, items.length); i++) {
+        var t = items[i].querySelector('title').textContent;
+        var l = items[i].querySelector('link').textContent;
+        var d = new Date(items[i].querySelector('pubDate').textContent);
+        var ds = d.getFullYear() + '年' + (d.getMonth() + 1) + '月' + d.getDate() + '日';
+        html += '<a class="card" href="' + l + '" target="_blank" rel="noopener"><h3 style="font-size:17px">' +
+          t.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</h3><p class="small-note">' + ds + ' ・ note</p></a>';
+      }
+      if (html) grid.innerHTML = html;
+    })
+    .catch(function(){});
+})();
 </script>
 </body>
 </html>
