@@ -452,7 +452,7 @@ body{background-color:#f5f0e3;background-image:url("data:image/svg+xml,%3Csvg%20
         <p class="eyebrow" style="margin-bottom:10px">Official LINE</p>
         <h3>公式LINE「AEDひろめ隊」</h3>
         <p>LINEで近くのAEDが探せます。トークに位置情報を送ると、近い順に3件を経路つきで返信します。救命の手順や「よくある誤解」も読めます。</p>
-        <p class="small-note" style="margin-top:8px">位置情報は、近くのAEDを検索するためだけに使い、保存はしません。</p>
+        <p class="small-note" style="margin-top:8px">位置情報は近くのAEDの検索にだけ使い、当方では保存しません（LINEのトーク履歴には残ります）。</p>
         <div class="line-flex">
           <a class="line-btn" href="https://line.me/R/ti/p/@202ordar" target="_blank" rel="noopener">友だち追加</a>
           <div class="line-qr"><img src="images/line-qr.svg" alt="公式LINEのQRコード"><span>パソコンの方はQRコードから</span></div>
