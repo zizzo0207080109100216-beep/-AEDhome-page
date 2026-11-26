@@ -179,7 +179,7 @@ footer a{margin:0 9px}
 <section id="quiz-movie" class="quiz-stage-sec">
   <div class="wrap">
     <div class="quiz-stage">
-      <video class="qs-video active" src="aed-quiz-1.mp4" poster="aed-quiz-1.jpg" muted loop playsinline autoplay preload="auto"></video><video class="qs-video" src="aed-quiz-2.mp4" poster="aed-quiz-2.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-3.mp4" poster="aed-quiz-3.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-4.mp4" poster="aed-quiz-4.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-5.mp4" poster="aed-quiz-5.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-6.mp4" poster="aed-quiz-6.jpg" muted loop playsinline preload="none"></video><video class="qs-video" src="aed-quiz-7.mp4" poster="aed-quiz-7.jpg" muted loop playsinline preload="none"></video>
+      <video class="qs-video active" src="aed-quiz-1.mp4" poster="aed-quiz-1.jpg" muted playsinline autoplay preload="auto"></video><video class="qs-video" src="aed-quiz-2.mp4" poster="aed-quiz-2.jpg" muted playsinline preload="none"></video><video class="qs-video" src="aed-quiz-3.mp4" poster="aed-quiz-3.jpg" muted playsinline preload="none"></video><video class="qs-video" src="aed-quiz-4.mp4" poster="aed-quiz-4.jpg" muted playsinline preload="none"></video><video class="qs-video" src="aed-quiz-5.mp4" poster="aed-quiz-5.jpg" muted playsinline preload="none"></video><video class="qs-video" src="aed-quiz-6.mp4" poster="aed-quiz-6.jpg" muted playsinline preload="none"></video><video class="qs-video" src="aed-quiz-7.mp4" poster="aed-quiz-7.jpg" muted playsinline preload="none"></video>
       
     </div>
     <div class="qs-bar"><div class="qs-caption"><span class="movie-no" id="qsNo">その1</span><span id="qsTheme">「ショックは不要です」って、どういうこと？</span></div><div class="qs-dots"><button class="qs-dot active" data-i="0" aria-label="その1"></button><button class="qs-dot" data-i="1" aria-label="その2"></button><button class="qs-dot" data-i="2" aria-label="その3"></button><button class="qs-dot" data-i="3" aria-label="その4"></button><button class="qs-dot" data-i="4" aria-label="その5"></button><button class="qs-dot" data-i="5" aria-label="その6"></button><button class="qs-dot" data-i="6" aria-label="その7"></button></div><p class="qs-note">AEDクイズ動画 ― 誤解をとく7本（音は出ません）</p></div>
@@ -191,21 +191,33 @@ footer a{margin:0 9px}
   var vids = Array.prototype.slice.call(document.querySelectorAll('.qs-video'));
   var dots = Array.prototype.slice.call(document.querySelectorAll('.qs-dot'));
   var noEl = document.getElementById('qsNo'), thEl = document.getElementById('qsTheme');
-  var cur = 0, timer = null;
+  var cur = 0, token = 0;
+  function armFallback(v, tk){
+    function arm(){
+      if (tk !== token) return;
+      var d = isFinite(v.duration) && v.duration > 0 ? v.duration : 60;
+      setTimeout(function(){ if (tk === token && !v.paused && !v.ended) { /* still playing, re-arm */ arm(); } else if (tk === token && v.ended) { show(cur + 1); } }, (d + 2) * 1000);
+    }
+    if (v.readyState >= 1) arm(); else v.addEventListener('loadedmetadata', arm, { once: true });
+  }
   function show(n){
+    token++;
     vids[cur].classList.remove('active'); vids[cur].pause(); dots[cur].classList.remove('active');
     cur = (n + vids.length) % vids.length;
-    var v = vids[cur];
+    var v = vids[cur], tk = token;
     v.classList.add('active'); dots[cur].classList.add('active');
     noEl.textContent = 'その' + (cur + 1); thEl.textContent = themes[cur];
+    try { v.currentTime = 0; } catch (e) {}
     if (v.readyState === 0) { v.preload = 'auto'; v.load(); }
     var p = v.play(); if (p) { p.catch(function(){}); }
+    armFallback(v, tk);
   }
-  function start(){ timer = setInterval(function(){ show(cur + 1); }, 14000); }
-  function reset(){ clearInterval(timer); start(); }
-  dots.forEach(function(d){ d.addEventListener('click', function(){ show(parseInt(d.getAttribute('data-i'), 10)); reset(); }); });
-  document.addEventListener('visibilitychange', function(){ if (document.hidden) { clearInterval(timer); vids[cur].pause(); } else { vids[cur].play().catch(function(){}); start(); } });
-  start();
+  vids.forEach(function(v, i){
+    v.addEventListener('ended', function(){ if (i === cur) show(cur + 1); });
+  });
+  dots.forEach(function(d){ d.addEventListener('click', function(){ show(parseInt(d.getAttribute('data-i'), 10)); }); });
+  document.addEventListener('visibilitychange', function(){ if (document.hidden) { vids[cur].pause(); } else { vids[cur].play().catch(function(){}); } });
+  armFallback(vids[0], token);
 })();
 </script>
 
