@@ -371,7 +371,7 @@ body{background-color:#f5f0e3;background-image:url("data:image/svg+xml,%3Csvg%20
     <div class="section-heading"><p class="eyebrow">Timeline</p><h2>AEDひろめ隊のあゆみ</h2></div>
     <ol class="timeline">
       <li><span class="t-num">1.</span><span class="t-date">2004</span><div class="t-body"><h3>初めての心停止。</h3><p>プールの監視員として心停止に遭遇。AEDを使えなかったが、居合わせた人たちの行動で助けることができた。活動の原点。</p></div></li>
-      <li><span class="t-num">2.</span><span class="t-date">立川</span><div class="t-body"><h3>ガイドブック、刊行。</h3><p>立川市内612箇所のAED設置場所を掲載した「いのちを守る立川さんぽ」を制作。街歩きとAEDを結ぶ普及活動が始まる。</p></div></li>
+      <li><span class="t-num">2.</span><span class="t-date">2026</span><div class="t-body"><h3>ガイドブック、刊行。</h3><p>立川市内612箇所のAED設置場所を掲載した「いのちを守る立川さんぽ」を制作。街歩きとAEDを結ぶ普及活動が始まる。</p></div></li>
       <li><span class="t-num">3.</span><span class="t-date">2024.08</span><div class="t-body"><h3>えくてびあんに掲載。</h3><p>地域情報誌「えくてびあん」の「街を歩けば」で、AED設置場所を地図に落とし込む活動が紹介される。</p></div></li>
       <li><span class="t-num">4.</span><span class="t-date">講演</span><div class="t-body"><h3>高校生、約300名へ。</h3><p>地域高校で講演とAEDマップ作製ワークショップを実施。生徒たちが自分の生活圏の「命を守る地図」を完成させた。</p></div></li>
       <li><span class="t-num">5.</span><span class="t-date">現在</span><div class="t-body"><h3>物語と地図で、広げ続ける。</h3><p>note創作大賞への応募作5作品を公開し、小説・ゲーム・マップでAEDを届け続けている。杉並区など活動の場も広がっている。</p></div></li>
